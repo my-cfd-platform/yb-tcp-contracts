@@ -1,0 +1,16 @@
+[package]
+name = "yb-tcp-contracts"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rust-fix = {git = "https://github.com/RomanSavh/rust-fix", tag = "0.1.0"}
+my-tcp-sockets = { tag = "0.1.7", git = "https://github.com/MyJetTools/my-tcp-sockets.git", features = ["serialize_as_ref", "statefull_serializer"] }
+
+async-trait = "*"
+chrono = "*"
+
+
+tokio = { version = "*", features = ["full"] }

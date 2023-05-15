@@ -60,6 +60,17 @@ pub enum FixOutcomeMessage {
     PlaceOrder(PlaceOrderYbTcpContract),
 }
 
+
+impl FixOutcomeMessage {
+    pub fn to_string(&self) -> String {
+        match self{
+            FixOutcomeMessage::InstrumentsSubscribe(src) => src.to_string(),
+            FixOutcomeMessage::Logon => "Logon".to_string(),
+            FixOutcomeMessage::Ping => "Ping".to_string(),
+            FixOutcomeMessage::PlaceOrder(_) => "PlaceOrder".to_string(),
+        }
+    }
+}
 pub enum FixMessage {
     Income(FixIncomeMessage),
     Outcome(FixOutcomeMessage),
@@ -69,7 +80,7 @@ impl FixMessage {
     pub fn to_string(&self) -> String {
         match self{
             FixMessage::Income(src) => src.to_string(),
-            FixMessage::Outcome(_) => todo!(),
+            FixMessage::Outcome(src) => src.to_string(),
         }
     }
 }

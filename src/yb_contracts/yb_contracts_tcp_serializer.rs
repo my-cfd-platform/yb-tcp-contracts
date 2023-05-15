@@ -164,7 +164,7 @@ impl TcpSocketSerializer<FixMessage> for YourBourseFixTcpSerializer {
                 crate::FixOutcomeMessage::Logon => {
                     self.serialize_logon(&password, &sender, &target)
                 }
-                crate::FixOutcomeMessage::Ping => todo!(),
+                crate::FixOutcomeMessage::Ping => self.serialize_ping(&self.auth_credentials.sender, &self.auth_credentials.target),
                 crate::FixOutcomeMessage::PlaceOrder(contract) => {
                     self.serialize_place_order_contract(&contract)
                 }
@@ -190,7 +190,7 @@ impl TcpSocketSerializer<FixMessage> for YourBourseFixTcpSerializer {
                 crate::FixOutcomeMessage::Logon => {
                     self.serialize_logon(&password, &sender, &target)
                 }
-                crate::FixOutcomeMessage::Ping => todo!(),
+                crate::FixOutcomeMessage::Ping => self.serialize_ping(&self.auth_credentials.sender, &self.auth_credentials.target),
                 crate::FixOutcomeMessage::PlaceOrder(contract) => {
                     self.serialize_place_order_contract(contract)
                 }

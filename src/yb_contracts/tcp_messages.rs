@@ -138,22 +138,6 @@ pub enum ExecutionReportModelExecutionType {
     Trade,
 }
 
-impl OrderType {
-    pub fn from_str(src: &str) -> Self {
-        match src {
-            "1" => Self::Market,
-            "2" => Self::Limit,
-            _ => panic!("Unknown order type"),
-        }
-    }
-}
-
-#[derive(Debug, Clone)]
-pub enum OrderType {
-    Market,
-    Limit,
-}
-
 impl ExecutionReportModelExecutionType {
     pub fn from_str(src: &str) -> Self {
         match src {
@@ -165,6 +149,24 @@ impl ExecutionReportModelExecutionType {
         }
     }
 }
+
+
+#[derive(Debug, Clone)]
+pub enum OrderType {
+    Market,
+    Limit,
+}
+
+impl OrderType {
+    pub fn from_str(src: &str) -> Self {
+        match src {
+            "1" => Self::Market,
+            "2" => Self::Limit,
+            _ => panic!("Unknown order type"),
+        }
+    }
+}
+
 
 #[derive(Debug, Clone)]
 pub struct ExecutionReportModel {
@@ -221,7 +223,7 @@ impl Into<ExecutionReportModel> for FixMessageBuilder {
                 self.get_value_string("39").unwrap().as_str(),
             ),
             execution_type: ExecutionReportModelExecutionType::from_str(
-                self.get_value_string("39").unwrap().as_str(),
+                self.get_value_string("150").unwrap().as_str(),
             ),
             symbol: self.get_value_string("55").unwrap(),
             side: PlaceOrderYbTcpContractSide::from_str(

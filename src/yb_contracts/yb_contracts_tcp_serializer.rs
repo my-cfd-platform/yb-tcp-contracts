@@ -164,9 +164,12 @@ impl TcpSocketSerializer<FixMessage> for YourBourseFixTcpSerializer {
                 crate::FixOutcomeMessage::Logon => {
                     self.serialize_logon(&password, &sender, &target)
                 }
-                crate::FixOutcomeMessage::Ping => self.serialize_ping(&self.auth_credentials.sender, &self.auth_credentials.target),
+                crate::FixOutcomeMessage::Ping => self
+                    .serialize_ping(&self.auth_credentials.sender, &self.auth_credentials.target),
                 crate::FixOutcomeMessage::PlaceOrder(contract) => {
-                    self.serialize_place_order_contract(&contract)
+                    let place_order_contract = self.serialize_place_order_contract(&contract);
+                    println!("Outcome: {:?}", place_order_contract.to_string());
+                    place_order_contract
                 }
             },
         };
@@ -190,9 +193,12 @@ impl TcpSocketSerializer<FixMessage> for YourBourseFixTcpSerializer {
                 crate::FixOutcomeMessage::Logon => {
                     self.serialize_logon(&password, &sender, &target)
                 }
-                crate::FixOutcomeMessage::Ping => self.serialize_ping(&self.auth_credentials.sender, &self.auth_credentials.target),
+                crate::FixOutcomeMessage::Ping => self
+                    .serialize_ping(&self.auth_credentials.sender, &self.auth_credentials.target),
                 crate::FixOutcomeMessage::PlaceOrder(contract) => {
-                    self.serialize_place_order_contract(contract)
+                    let place_order_contract = self.serialize_place_order_contract(&contract);
+                    println!("Outcome: {:?}", place_order_contract.to_string());
+                    place_order_contract
                 }
             },
         };
@@ -260,7 +266,7 @@ impl TcpSocketSerializer<FixMessage> for YourBourseFixTcpSerializer {
         };
     }
 
-    fn apply_packet(&mut self, _: &FixMessage) -> bool{
+    fn apply_packet(&mut self, _: &FixMessage) -> bool {
         true
     }
 }

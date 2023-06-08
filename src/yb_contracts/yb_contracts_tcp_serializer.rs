@@ -168,11 +168,11 @@ impl TcpSocketSerializer<FixMessage> for YourBourseFixTcpSerializer {
                     .serialize_ping(&self.auth_credentials.sender, &self.auth_credentials.target),
                 crate::FixOutcomeMessage::PlaceOrder(contract) => {
                     let place_order_contract = self.serialize_place_order_contract(&contract);
-                    println!("Outcome: {:?}", place_order_contract.to_string());
                     place_order_contract
                 }
             },
         };
+        println!("Outcome: {:?}", fix_message.to_string());
 
         fix_message.as_bytes()
     }
@@ -197,11 +197,12 @@ impl TcpSocketSerializer<FixMessage> for YourBourseFixTcpSerializer {
                     .serialize_ping(&self.auth_credentials.sender, &self.auth_credentials.target),
                 crate::FixOutcomeMessage::PlaceOrder(contract) => {
                     let place_order_contract = self.serialize_place_order_contract(&contract);
-                    println!("Outcome: {:?}", place_order_contract.to_string());
                     place_order_contract
                 }
             },
         };
+
+        println!("Outcome: {:?}", fix_message.to_string());
 
         fix_message.as_bytes()
     }

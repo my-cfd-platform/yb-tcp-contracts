@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 rust-fix = {git = "https://github.com/RomanSavh/rust-fix", tag = "0.1.0"}
-my-tcp-sockets = { tag = "0.1.7", git = "https://github.com/MyJetTools/my-tcp-sockets.git", features = ["serialize_as_ref", "statefull_serializer"] }
+my-tcp-sockets = { tag = "0.1.8", git = "https://github.com/MyJetTools/my-tcp-sockets.git", features = ["serialize_as_ref", "statefull_serializer"] }
 
 async-trait = "*"
 chrono = "*"

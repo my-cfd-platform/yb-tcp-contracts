@@ -1,5 +1,6 @@
 pub mod deserialize;
 mod tcp_messages;
+pub use tcp_messages::*;
 pub mod tcp_serializer;
 mod tcp_state;
 use my_tcp_sockets::tcp_connection::TcpSocketConnection;
